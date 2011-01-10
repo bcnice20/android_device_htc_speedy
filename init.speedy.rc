@@ -1,0 +1,212 @@
+on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+on fs
+    mkdir /system
+    mkdir /data 0771 system system
+    mkdir /cache 0770 system cache
+    mkdir /devlog 0700 root root
+    mount ext4 /dev/block/mmcblk0p25 /system wait ro data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p26 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p27 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+
+on early-init
+    device mtd@misc 0460 radio diag
+
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+    mkdir /data/misc/wimax 0770 wimax wimax
+    mkdir /data/misc/wimax/sockets 0770  wimax wimax
+    mkdir /data/wimax/ 0770  system system
+    mkdir /data/wimax/log 0770  system system
+
+    # bluetooth power up/down interface
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chmod 0660                /sys/class/rfkill/rfkill0/state
+
+    # bluetooth MAC address programming
+    chown bluetooth bluetooth /sys/module/board_vision/parameters/bdaddr
+    setprop ro.bt.bdaddr_path /sys/module/board_vision/parameters/bdaddr
+    # bluetooth car dock pin
+    chown system system /sys/class/switch/dock/bt_pin
+
+# Enable low memory killer to check file pages
+    write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,5120,5632,6144
+    write /sys/module/lowmemorykiller/parameters/check_filepages 1
+
+    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
+
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+    -Dwext -ieth0 -c/data/misc/wifi/wpa_supplicant.conf
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
+    socket wpa_eth0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service dhcpcd /system/bin/dhcpcd -ABKL eth0
+    disabled
+    oneshot
+
+service dhcpWimax /system/bin/dhcpcd -ABKL -f /etc/wimax/dhcp/wimaxDhcp.conf wimax0
+    disabled
+    oneshot
+
+# compass/accelerometer daemon
+service akmd /system/bin/akmd
+    user compass
+    group compass misc input
+
+# bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
+service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+    disabled
+    oneshot
+    keycodes 114 115
+
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+
+
+service udhcpd /system/bin/udhcpd
+    disabled
+    oneshot
+
+service netsharing_on /system/bin/netsharing net on
+    disabled
+    oneshot
+
+service netsharing_off /system/bin/netsharing net off
+    disabled
+    oneshot
+
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
+    user root
+    disabled
+
+service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
+    user root
+        disabled
+    oneshot
+
+service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
+    user root
+        disabled
+    oneshot
+
+on property:ro.build.tags=test-keys
+    start htc_ebdlogd
+
+on property:ro.build.tags=release-keys
+    start htc_ebdlogd_rel
+
+on property:ro.emmc=1
+    start rmt_storage
+
+service sequansd /system/bin/sequansd /etc/wimax/sequansd/sequansd_app.xml
+    user root
+    group root inet
+    socket sequansd_0 dgram 660 root root
+    disabled
+    oneshot
+
+service wimaxDhcpRelease /system/bin/wimaxDhcpRelease
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxDhcpRenew /system/bin/wimaxDhcpRenew
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxAddRoute /system/bin/wimaxAddRoute
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxDumpLogcat /system/bin/wimaxDumpLogcat /data/wimax/log
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxDumpKmsg /system/bin/wimaxDumpKmsg /data/wimax/log
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxDumpLastKmsg /system/bin/wimaxDumpLastKmsg /data/wimax/log
+    user root
+    group root
+    disabled
+    oneshot
+
+service wmxCfgItf /system/bin/wimaxConfigInterface
+    user root
+    group root
+    disabled
+    oneshot
+
+# wimax_mtd daemon
+service wimax_mtd /system/bin/wimax_mtd
+   user root
+   group root
+   oneshot
+
+# setWMXPropd daemon
+service setWMXPropd /system/bin/setWiMAXPropDaemond
+    user root
+    group root
+    oneshot
+
+# getWMXPropd daemon
+service getWMXPropd /system/bin/getWiMAXPropDaemond
+    user root
+    group root
+    oneshot
+
+service dmagent /system/bin/dmagent -N -P19 -VSY
+    socket dmagent stream 660 root radio
+    user root
+    group radio cache inet misc
+
+# HTC IPC server
+service htcipcd /system/bin/htcipcd
+    user root
+    group root system
+
+# CIQ backend daemon
+service iqd /system/bin/iqd
+    user root
+    group root system
+
+# CIQ frontend daemon
+service iqfd /system/bin/iqfd
+    user root
+    group root system
+
+service srv_ser2net /system/bin/ser2net -n
+    disabled
+
+on property:service.ser2net.enable=1
+    start srv_ser2net
+
+on property:service.ser2net.enable=0
+    stop srv_ser2net
+
