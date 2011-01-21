@@ -81,24 +81,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/htc/speedy/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
     device/htc/speedy/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-ell.kcm.bin:system/usr/keychars/speedy-keypad-ell.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-fra.kcm.bin:system/usr/keychars/speedy-keypad-fra.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-ger.kcm.bin:system/usr/keychars/speedy-keypad-ger.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-ita.kcm.bin:system/usr/keychars/speedy-keypad-ita.kcm.bin \
     device/htc/speedy/keychars/speedy-keypad.kcm.bin:system/usr/keychars/speedy-keypad.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-tur.kcm.bin:system/usr/keychars/speedy-keypad-tur.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-wwe-bopomo.kcm.bin:system/usr/keychars/speedy-keypad-wwe-bopomo.kcm.bin \
-    device/htc/speedy/keychars/speedy-keypad-wwe.kcm.bin:system/usr/keychars/speedy-keypad-wwe.kcm.bin \
-    device/htc/speedy/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/speedy/keylayout/speedy-keypad-ara.kl:system/usr/keylayout/speedy-keypad-ara.kl \
-    device/htc/speedy/keylayout/speedy-keypad-ell.kl:system/usr/keylayout/speedy-keypad-ell.kl \
-    device/htc/speedy/keylayout/speedy-keypad-fra.kl:system/usr/keylayout/speedy-keypad-fra.kl \
-    device/htc/speedy/keylayout/speedy-keypad-ger.kl:system/usr/keylayout/speedy-keypad-ger.kl \
-    device/htc/speedy/keylayout/speedy-keypad-ita.kl:system/usr/keylayout/speedy-keypad-ita.kl \
+    device/htc/speedy/keychars/speedy-keypad-v0.kcm.bin:system/usr/keychars/speedy-keypad-v0.kcm.bin \
+    device/htc/speedy/keylayout/speedy-keypad-v0.kl:system/usr/keylayout/speedy-keypad-v0.kl \
+    device/htc/speedy/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
     device/htc/speedy/keylayout/speedy-keypad.kl:system/usr/keylayout/speedy-keypad.kl \
-    device/htc/speedy/keylayout/speedy-keypad-tur.kl:system/usr/keylayout/speedy-keypad-tur.kl \
-    device/htc/speedy/keylayout/speedy-keypad-wwe-bopomo.kl:system/usr/keylayout/speedy-keypad-wwe-bopomo.kl \
-    device/htc/speedy/keylayout/speedy-keypad-wwe.kl:system/usr/keylayout/speedy-keypad-wwe.kl
+    device/htc/speedy/keylayout/AVCRP.kl:system/usr/keylayout/AVCRP.kl \
+    device/htc/speedy/keylayout/qwerty:system/usr/keylayout/qwerty.kl
 
 # Firmware
 PRODUCT_COPY_FILES += \
@@ -116,7 +105,8 @@ PRODUCT_COPY_FILES += \
     device/htc/speedy/firmware/vidc_720p_mp4_enc_mc.fw:system/etc/firmware/vidc_720p_mp4_enc_mc.fw \
     device/htc/speedy/firmware/vidc_720p_vc1_dec_mc.fw:system/etc/firmware/vidc_720p_vc1_dec_mc.fw \
     device/htc/speedy/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/htc/speedy/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
+    device/htc/speedy/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/htc/speedy/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd
 
 
 # we have enough storage space to hold precise GC data
