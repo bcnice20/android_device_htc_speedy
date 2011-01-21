@@ -86,13 +86,14 @@ PRODUCT_COPY_FILES += \
     device/htc/speedy/keylayout/speedy-keypad-v0.kl:system/usr/keylayout/speedy-keypad-v0.kl \
     device/htc/speedy/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
     device/htc/speedy/keylayout/speedy-keypad.kl:system/usr/keylayout/speedy-keypad.kl \
-    device/htc/speedy/keylayout/AVCRP.kl:system/usr/keylayout/AVCRP.kl \
+    device/htc/speedy/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/htc/speedy/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/speedy/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
+    device/htc/speedy/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd \
     device/htc/speedy/firmware/default.acdb:system/etc/firmware/default.acdb \
+    device/htc/speedy/firmware/default_mfg.acdb:system/etc/firmware/default_mfg.acdb \
     device/htc/speedy/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
     device/htc/speedy/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
     device/htc/speedy/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
@@ -105,8 +106,8 @@ PRODUCT_COPY_FILES += \
     device/htc/speedy/firmware/vidc_720p_mp4_enc_mc.fw:system/etc/firmware/vidc_720p_mp4_enc_mc.fw \
     device/htc/speedy/firmware/vidc_720p_vc1_dec_mc.fw:system/etc/firmware/vidc_720p_vc1_dec_mc.fw \
     device/htc/speedy/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/htc/speedy/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    device/htc/speedy/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd
+    device/htc/speedy/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw 
+
 
 
 # we have enough storage space to hold precise GC data
