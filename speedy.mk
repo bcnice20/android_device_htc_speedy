@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
     device/htc/speedy/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
     device/htc/speedy/keylayout/speedy-keypad.kl:system/usr/keylayout/speedy-keypad.kl \
     device/htc/speedy/keylayout/AVCRP.kl:system/usr/keylayout/AVCRP.kl \
-    device/htc/speedy/keylayout/qwerty:system/usr/keylayout/qwerty.kl
+    device/htc/speedy/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 # Firmware
 PRODUCT_COPY_FILES += \
