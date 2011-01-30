@@ -43,6 +43,7 @@ adb pull /system/lib/libhtc_ril.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmmipl.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmmjpeg.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/liboemcamera.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libposteffect.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/wimaxDumpKmsg ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/apph ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/wimaxDumpLogcat ../../../vendor/htc/$DEVICE/proprietary
@@ -123,7 +124,8 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/wimaxAddRoute:/system/bin/wimaxAddRoute \\
     vendor/htc/__DEVICE__/proprietary/wimaxConfigInterface:/system/bin/wimaxConfigInterface \\
     vendor/htc/__DEVICE__/proprietary/DefaultTree.xml:/system/etc/wimax/sequansd/DefaultTree.xml \\
-    vendor/htc/__DEVICE__/proprietary/sequansd_app.xml:/system/etc/wimax/sequansd/sequansd_app.xml
+    vendor/htc/__DEVICE__/proprietary/sequansd_app.xml:/system/etc/wimax/sequansd/sequansd_app.xml \\
+    vendor/htc/__DEVICE__/proprietary/libposteffect.so:/system/lib/libposteffect.so
 EOF
 
 ./setup-makefiles.sh

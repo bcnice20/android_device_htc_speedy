@@ -24,6 +24,9 @@
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- Our amoled doesn't animate well. -->
+    <bool name="config_animateScreenLights">false</bool>
+
     <!-- disable menu hard key on Passion in non-pattern lockscreen -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
@@ -54,15 +57,15 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>77</item>
-        <item>107</item>
-        <item>107</item>
+        <item>81</item>
+        <item>81</item>
+        <item>81</item>
+        <item>112</item>
         <item>143</item>
-        <item>143</item>
-        <item>143</item>
-        <item>171</item>
-        <item>199</item>
-        <item>227</item>
+        <item>163</item>
+        <item>186</item>
+        <item>208</item>
+        <item>231</item>
         <item>255</item>
     </integer-array>
 
@@ -166,10 +169,6 @@
     <integer-array name="config_keyboardTapVibePattern">
         <item>40</item>
     </integer-array>
-
-    <!--
-    <bool name="config_animateScreenLights">false</bool>
-    -->
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
          specified -->

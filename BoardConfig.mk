@@ -43,16 +43,13 @@ BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := bcm4329
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
-WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329.bin"
-WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
+WIFI_DRIVER_FW_STA_PATH     := "/system/vendor/firmware/fw_bcm4329.bin"
+WIFI_DRIVER_FW_AP_PATH      := "/system/vendor/firmware/fw_bcm4329_apsta.bin"
+WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_PREBUILT_LIBAUDIO := true
-BOARD_CAMERA_USE_GETBUFFERINFO := true
-BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
-BOARD_USE_NEW_LIBRIL_HTC := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x04000000
@@ -71,8 +68,6 @@ BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
-BOARD_USE_NEW_LIBRIL_HTC := true
-
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
@@ -86,12 +81,11 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 BOARD_NO_RGBX_8888 := true
 
 # cat /proc/emmc
-# dev:        size     erasesize name
+#dev:        size     erasesize name
 #mmcblk0p17: 00040000 00000200 "misc"
 #mmcblk0p21: 0087f400 00000200 "recovery"
 #mmcblk0p22: 00400000 00000200 "boot"
 #mmcblk0p26: 1f7bf600 00000200 "system"
-#mmcblk0p29: 00140200 00000200 "local"
 #mmcblk0p28: 09a7fa00 00000200 "cache"
 #mmcblk0p27: 1bbffe00 00000200 "userdata"
 #mmcblk0p31: 01400200 00000200 "devlog"
@@ -99,7 +93,7 @@ BOARD_NO_RGBX_8888 := true
 #mmcblk0p25: 00c00200 00000200 "wimax"
 #mmcblk0p30: 007ffa00 00000200 "udata_wimax"
 
-TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_EXT4 := false
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 528217600
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 465567232
 BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304

@@ -27,4 +27,4 @@
 #
 PRODUCT_PROPERTY_OVERRIDES += \
       media.a1026.nsForVoiceRec            = 0 \
-      media.a1026.enableA1026              = 1
+      media.a1026.enableA1026              = 0

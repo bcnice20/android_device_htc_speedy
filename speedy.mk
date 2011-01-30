@@ -57,10 +57,13 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 
 # media config xml file
 PRODUCT_COPY_FILES += \
@@ -91,6 +94,7 @@ PRODUCT_COPY_FILES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
+    device/htc/speedy/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
     device/htc/speedy/firmware/BCM4329B1_002.002.023.0511.0538.hcd:system/etc/firmware/BCM4329B1_002.002.023.0511.0538.hcd \
     device/htc/speedy/firmware/default.acdb:system/etc/firmware/default.acdb \
     device/htc/speedy/firmware/default_mfg.acdb:system/etc/firmware/default_mfg.acdb \
@@ -145,7 +149,7 @@ $(call inherit-product, device/htc/speedy/media_htcaudio.mk)
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, build/target/product/full_base.mk)
 
 
 PRODUCT_NAME := htc_speedy
