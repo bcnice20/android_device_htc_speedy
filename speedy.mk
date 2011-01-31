@@ -135,7 +135,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/htc/speedy/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
+    device/htc/speedy/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
+    device/htc/speedy/modules/sequans_sdio.ko:system/lib/modules/sequans_sdio.ko \
+    device/htc/speedy/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
+    device/htc/speedy/modules/cifs.ko:system/lib/modules/cifs.ko \
+    device/htc/speedy/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
+    device/htc/speedy/modules/evbug.ko:system/lib/modules/evbug.ko \
+    device/htc/speedy/modules/wimaxdbg.ko:system/lib/modules/wimaxdbg.ko \
+    device/htc/speedy/modules/wimaxuart.ko:system/lib/modules/wimaxuart.ko
 
 $(call inherit-product-if-exists, vendor/htc/speedy/speedy-vendor.mk)
 
