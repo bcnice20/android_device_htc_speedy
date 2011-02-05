@@ -120,7 +120,8 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_LOCALES += hdpi
 
 PRODUCT_COPY_FILES += \
-    device/htc/speedy/vold.fstab:system/etc/vold.fstab
+    device/htc/speedy/vold.fstab:system/etc/vold.fstab \
+    device/htc/speedy/apns-conf.xml:system/etc/apns-conf.xml
 
 # Kernel modules
 #PRODUCT_COPY_FILES += \
