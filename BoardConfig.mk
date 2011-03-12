@@ -50,7 +50,7 @@ WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/fw_bcm4329
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
 BOARD_USES_GENERIC_AUDIO := false
-# BOARD_PREBUILT_LIBAUDIO := true
+BOARD_PREBUILT_LIBAUDIO := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x4000000
