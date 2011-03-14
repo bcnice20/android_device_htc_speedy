@@ -20,6 +20,13 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
+
+    <!-- Flag indicating whether the surface flinger has limited
+         alpha compositing functionality in hardware.  If set, the window
+         manager will disable alpha trasformation in animations where not
+         strictly needed. -->
+    <bool name="config_sf_limitedAlpha">true</bool>
+
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
@@ -54,15 +61,15 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>81</item>
-        <item>81</item>
-        <item>81</item>
-        <item>112</item>
-        <item>143</item>
-        <item>163</item>
-        <item>186</item>
-        <item>208</item>
-        <item>231</item>
+        <item>89</item>
+        <item>89</item>
+        <item>126</item>
+        <item>164</item>
+        <item>164</item>
+        <item>164</item>
+        <item>187</item>
+        <item>210</item>
+        <item>233</item>
         <item>255</item>
     </integer-array>
 
@@ -74,7 +81,7 @@
         <item>255</item>
         <item>255</item>
         <item>255</item>
-        <item>-1</item>
+        <item>255</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -89,10 +96,10 @@
          Passion has no keyboard so all values are zero.
     -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -178,15 +185,14 @@
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-        <item>40</item>
+        <item>30</item>
     </integer-array>
-
-    <!--
-    <bool name="config_animateScreenLights">false</bool>
-    -->
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
          specified -->
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
+
+    <!-- Enable use of power animations -->
+    <bool name="config_animateScreenLights">false</bool>
 
 </resources>
